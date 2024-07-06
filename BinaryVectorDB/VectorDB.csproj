@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Index\" />
-    <Folder Include="Storage\" />
-  </ItemGroup>
-
 </Project>
