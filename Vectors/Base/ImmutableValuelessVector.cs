@@ -5,12 +5,12 @@ using System.Numerics;
 
 namespace Vector.Base
 {
-    public abstract record FlatVector<T1>
-        : IVector<T1> where T1 : struct
+    public abstract record ImmutableValuelessVector<T1>
+        : IImmutableVector<T1> where T1 : struct
     {
-        public ImmutableArray<T1> Vector { get; init; }
+        public IReadOnlyList<T1> Vector { get; init; }
 
-        public FlatVector(T1[] vector)
+        public ImmutableValuelessVector(T1[] vector)
         {
             Vector = ImmutableArray.Create(vector);
             SegmentByteLength = Marshal.SizeOf(typeof(T1));
@@ -19,7 +19,7 @@ namespace Vector.Base
             VectorBitLength = VectorByteLength * 8;
         }
 
-        public FlatVector(Span<T1> vector)
+        public ImmutableValuelessVector(Span<T1> vector)
             : this(vector.ToArray()) {}
 
         public int VectorBitLength { get; init; }
@@ -36,7 +36,7 @@ namespace Vector.Base
         /// <param name="stringSize">The size of the string for bucketing.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown if the stringSize parameter is too big or too small.</exception>
-        public virtual string ToBucketString(int stringSize)
+        public virtual string GetBucketHash(int stringSize)
         {
             string bucketString = string.Empty;
 

@@ -7,13 +7,13 @@ using Vector.Base;
 
 namespace VectorDB.Vector
 {
-    public record FloatVector
-        : FlatVector<float>
+    public record ImmutableFloatVector
+        : ImmutableValuelessVector<float>
     {
-        public FloatVector(float[] vector)
+        public ImmutableFloatVector(float[] vector)
             : base(vector) { }
 
-        public FloatVector(Span<float> vector)
+        public ImmutableFloatVector(Span<float> vector)
             : base(vector) { }
     }
 }

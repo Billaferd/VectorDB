@@ -13,11 +13,11 @@ namespace VectorTests
             // Arrange
 
             // Act
-            FloatVector vector = new FloatVector(vectorData);
+            ImmutableFloatVector vector = new ImmutableFloatVector(vectorData);
 
             // Assert
             Assert.IsNotNull(vector);
-            Assert.IsInstanceOfType(vector, typeof(FloatVector));
+            Assert.IsInstanceOfType(vector, typeof(ImmutableFloatVector));
             CollectionAssert.AreEqual(vectorData, vector.Vector.ToArray());
             Assert.AreEqual(4, vector.SegmentByteLength);
             Assert.AreEqual(32, vector.SegmentBitLength);
@@ -33,10 +33,10 @@ namespace VectorTests
         public void ToBucketString_ProduceByteString_ShouldEqualUTF8Representation(int stringLength, string expected)
         {
             // Arrange
-            FloatVector vector = new FloatVector(vectorData);
+            ImmutableFloatVector vector = new ImmutableFloatVector(vectorData);
 
             // Act
-            var bucketString = vector.ToBucketString(stringLength);
+            var bucketString = vector.GetBucketHash(stringLength);
 
             // Assert
             Assert.AreEqual(stringLength, bucketString.Length);
