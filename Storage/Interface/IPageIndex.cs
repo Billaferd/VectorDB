@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace VectorDB.Storage.Interface
 {
-    public interface IReadableDataStore<T>
+    public interface IPageIndex
     {
-        public T Get(T query);
-        public List<T> GetAll();
-        public List<T> GetAll(T query);
+        public uint PageId { get; set; }
+        public uint PageOffset { get; set; }
     }
 }
