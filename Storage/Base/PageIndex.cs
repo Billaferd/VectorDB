@@ -16,10 +16,17 @@ namespace VectorDB.Storage.Base
         public PageIndex(uint pageId)
         {
             this.PageId = pageId;
+            // this.PageOffset = 0; // Already initialized by default
+        }
+
+        public PageIndex(uint pageId, uint pageOffset) // Added constructor
+        {
+            this.PageId = pageId;
+            this.PageOffset = pageOffset;
         }
 
         public PageIndex()
-            : this(0)
+            : this(0, 0) // Updated to call the new constructor
         {}
     }
 }

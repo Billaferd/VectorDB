@@ -13,17 +13,21 @@ namespace VectorDB.Storage.Interface
 
         public PageStatus PageStatus { get; set; }
 
-        public uint PageId { get; init; }
+        public uint PageId { get; set; } // Changed from init to set
 
         public uint FreeSpace { get; set; }
 
-        public uint MaxItemSize { get; init; }
+        public uint MaxItemSize { get; set; } // Changed from init to set
 
         public IPageIndex PreviousPage { get; set; }
 
         public IPageIndex NextPage { get; set; }
 
         public IList<uint> DataOffsets { get; set; }
+
+        void Save(System.IO.BinaryWriter writer); // Added
+        bool TryAddItem(byte[] itemData); // Added back
+        byte[]? GetItem(int itemIndex); // Added back
     }
 
     [Flags]

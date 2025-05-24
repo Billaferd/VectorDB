@@ -15,7 +15,7 @@ namespace Vector.Base
             Vector = ImmutableArray.Create(vector);
             SegmentByteLength = Marshal.SizeOf(typeof(T1));
             SegmentBitLength = SegmentByteLength * 8;
-            VectorByteLength = SegmentByteLength * Vector.Length;
+            VectorByteLength = SegmentByteLength * Vector.Count; // Changed .Length to .Count
             VectorBitLength = VectorByteLength * 8;
         }
 

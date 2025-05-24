@@ -11,17 +11,17 @@ namespace VectorDB
         /// <summary>
         /// Specifies the path to be used for the data files.
         /// </summary>
-        public string DataFilePath { get; internal set; } = string.Empty;
+        public string DataFilePath { get; init; } = string.Empty;
 
         /// <summary>
         /// Specifies the path to be used for the index files.
         /// </summary>
-        public string IndexFilePath { get; internal set; } = string.Empty;
+        public string IndexFilePath { get; init; } = string.Empty;
 
         /// <summary>
         /// The number of vectors allowed to be added to the file.
         /// </summary>
-        public int BucketSize { get; internal set; } = 256;
+        public int BucketSize { get; init; } = 256;
 
         /// <summary>
         /// The number of starting bytes to be used for the bucket names.
@@ -29,7 +29,7 @@ namespace VectorDB
         /// <remarks>
         /// The higher this number is the more files that will be created.
         /// </remarks>
-        public int BucketByteSplit { get; internal set; } = 2;
+        public int BucketByteSplit { get; init; } = 2;
 
         /// <summary>
         /// The size of the vectors in bits
@@ -37,7 +37,7 @@ namespace VectorDB
         /// <remarks>
         /// The vectors should all be the same size.
         /// </remarks>
-        public int VectorBitSize { get; private set; } = 256;
+        public int VectorBitSize { get; init; } = 256;
 
         /// <summary>
         /// The size of the vectors in bytes
